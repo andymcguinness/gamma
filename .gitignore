@@ -1,0 +1,5 @@
+# vim .swp files
+*.swp
+
+# installed node dependencies
+node_modules/
