@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="gamma">
     <head>
         <meta charset="utf-8">
         <meta name="description" content="Gamma">
@@ -9,9 +9,14 @@
     <body>
         <h1>Welcome to Gamma!</h1>
 
+        <!-- // VIEW // -->
+        <div ui-view></div>
+
         <!-- // SCRIPTS // -->
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-resource.min.js"></script>
+        
+        <script src="app.js"></script>
     </body>
 </html>
