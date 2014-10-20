@@ -29,6 +29,7 @@ The git repo is organized using a variation on the git-flow workflow; the 'main'
 
 * **0.0.0**: Hello, world!
 * **0.0.1**: Basic Grunt functionality incorporated.
+* **0.0.2**: Basic blogging functionality incorporated. Nothing was automated, and everything hurt.
 
 ## 4 -- Colophon
 
