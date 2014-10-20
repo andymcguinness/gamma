@@ -7,5 +7,5 @@
  */
 
 exports.index = function(req, res) {
-    res.sendfile('app/index.html');
+    res.sendfile('views/index.html');
 };

@@ -1,5 +1,12 @@
+# File: .gitignore
+# Description: Sets up git to ignore certain files
+# Dependencies: none
+#
+# @package: gamma
+
 # vim .swp files
 *.swp
 
 # installed node dependencies
 node_modules/
+

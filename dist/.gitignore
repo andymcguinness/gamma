@@ -1,0 +1,9 @@
+# File: dist/.gitignore
+# Description: Keeps this directory committed to the repo, but keeps the stuff in it ignored
+# Dependencies: none
+#
+# @package gamma
+
+# All the files in this dir
+*.js
+*.css

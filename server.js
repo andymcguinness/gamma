@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 var port            = process.env.PORT || 8080;
 
 // sets where static files live
-app.use(express.static(__dirname + '/app/'));
+app.use(express.static(__dirname + '/views/'));
 
 
 /* === Routing === */
