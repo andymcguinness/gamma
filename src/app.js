@@ -40,7 +40,7 @@ function Config ($stateProvider, $urlRouterProvider) {
             controllerAs: 'blog',
             resolve: {
                 getPartial: function($stateParams) {
-                    return 'views/entries/' + $stateParams.title + '.html';
+                    return 'views/blog/entries/' + $stateParams.title + '.html';
                 }
             }
         });
