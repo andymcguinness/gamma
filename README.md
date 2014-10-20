@@ -17,15 +17,18 @@ In the end, I hope to have a lean, MEAN, blogging machine of a website that I ca
 
 ## 2 -- Technology
 
-As I briefly mentioned above, this new version will be powered by Angular on the frontend, and well, the rest of the MEAN stack on the backend -- save for Mongo. I probably won't need a db for this. I don't normally advocate for using Angular to build websites, but it's my website, and I'm an Angular developer, so why not? You only live once, or so I've heard.
+As I briefly mentioned above, this new version will be powered by Angular on the frontend, and well, the rest of the MEAN stack on the backend -- save for Mongo. (I probably won't need a db for this.) I don't normally advocate for using Angular to build websites, but it's my website, and I'm an Angular developer, so why not? You only live once, or so I've heard.
 
 I'm not using any templating language (yet) -- maybe down the line I'll feel inspired to learn Jade and incorporate it. For CSS, I'm planning on using Sass (or SCSS) because I've not yet had a good chance to run with it. Eventually, I'll also incorporate Grunt/Gulp and get minification & concatenation involved.
 
 For right now, I just want to build something that works.
 
+The git repo is organized using a variation on the git-flow workflow; the 'main' branch for the project is the development branch, and all features are to be implemented using a feature/[feature-name] branch structure. The actual main branch will only be used for releases.
+
 ## 3 -- Changelog
 
 * **0.0.0**: Hello, world!
+* **0.0.1**: Basic Grunt functionality incorporated.
 
 ## 4 -- Colophon
 
