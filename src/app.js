@@ -24,6 +24,24 @@ function Config ($stateProvider, $urlRouterProvider) {
             url: '/',
             templateUrl: 'views/home/home.html',
             controller: 'MainCtrl',
-            controllerAs: 'main'
+            controllerAs: 'main',
+            resolve: {
+                getEntries: function($http) {
+                    return $http({method: 'GET', url: 'entries.json'});
+                }
+            }
+        })
+        
+        // Blog state
+        .state('blog', {
+            url: '/blog/:title',
+            templateUrl: 'views/blog/blog-main.html',
+            controller: 'BlogCtrl',
+            controllerAs: 'blog',
+            resolve: {
+                getPartial: function($stateParams) {
+                    return 'views/entries/' + $stateParams.title + '.html';
+                }
+            }
         });
 }
