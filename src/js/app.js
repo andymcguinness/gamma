@@ -43,5 +43,13 @@ function Config ($stateProvider, $urlRouterProvider) {
                     return 'views/blog/entries/' + $stateParams.title + '.html';
                 }
             }
+        })
+        
+        // Admin state
+        .state('admin', {
+            url: '/secret',
+            templateUrl: 'views/admin/admin.html',
+            controller: 'AdminCtrl',
+            controllerAs: 'admin'
         });
 }
