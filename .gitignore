@@ -11,3 +11,5 @@
 # installed node dependencies
 node_modules/
 
+# grunt-contrib-sass
+.sass-cache/

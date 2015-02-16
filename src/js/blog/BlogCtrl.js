@@ -7,7 +7,6 @@
  */
 
 function BlogCtrl (getPartial) {
-    this.msg = "Hello!";
     this.partial = getPartial;
 }
 

@@ -1,0 +1,14 @@
+/*
+ * File: fonts.scss
+ * Description: Defines the fonts for the application
+ * Dependencies: Neuton, Alegreya Sans
+ *
+ * @package gamma
+ */
+
+/* === Importing Fonts === */
+@import url(http://fonts.googleapis.com/css?family=Neuton:300,400,700,400italic|Alegreya+Sans:300,400,500,700,300italic,400italic,500italic,700italic);
+
+/* === Font Variables === */
+$sans-serif: 'Alegreya Sans', 'Arial', sans-serif;
+$serif: 'Neuton', 'Times New Roman', serif;
