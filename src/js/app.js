@@ -12,7 +12,7 @@ angular
     .config(Config);                                // config for routing, etc.
 
 /* === Initial Routing === */
-function Config ($stateProvider, $urlRouterProvider) {
+function Config ($stateProvider, $urlRouterProvider, $locationProvider) {
     // if all else fails
     $urlRouterProvider.otherwise('/');
 
@@ -52,4 +52,7 @@ function Config ($stateProvider, $urlRouterProvider) {
             controller: 'AdminCtrl',
             controllerAs: 'admin'
         });
+
+    // remove hashbang from url
+    $locationProvider.html5Mode(true).hashPrefix('!');
 }

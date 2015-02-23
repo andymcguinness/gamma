@@ -38,8 +38,8 @@ module.exports = function(grunt) {
         },
         watch: {
             scripts: {
-                files: ['src/sass/*.scss', 'src/sass/*/*.scss'],
-                tasks: ['sass']
+                files: ['src/sass/*.scss', 'src/sass/*/*.scss', 'src/js/*.js', 'src/js/**/*.js'],
+                tasks: ['sass', 'concat']
             }
         }
     });

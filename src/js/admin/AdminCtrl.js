@@ -11,12 +11,27 @@ function AdminCtrl (ResourceFcty) {
     this.entries = ResourceFcty('entries').query();
 
     this.saveEntry = function() {
-        this.entry.title = this.title;
-        this.entry.date = this.date;
-        this.entry.text = this.text;
-        this.entry.images = []; 
+        if (this.title != "" && this.date != "" && this.text != "") {
+            this.entry.title = this.title;
+            this.entry.date = this.date;
+            this.entry.text = this.text;
+            this.entry.images = []; 
+            
+            this.title = "";
+            this.date = "";
+            this.text = "";
 
-        this.entry.$save();
+            this.entry.$save();
+            this.entries = ResourceFcty('entries').query();
+        } else {
+            if (this.title === "")
+                this.error = "No title provided";
+            else if (this.date === "")
+                this.error = "No date provided";
+            else
+                this.error = "No text provided";
+        }
+
     };
 }
 
