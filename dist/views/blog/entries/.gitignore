@@ -3,3 +3,6 @@
 # Dependencies: none
 #
 # @package gamma
+
+# Ignoring current directory
+*
