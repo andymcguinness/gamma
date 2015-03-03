@@ -20,6 +20,24 @@ module.exports = function(grunt) {
                 dest: 'dist/scripts.js'
             }
         },
+        markdown: {
+            all: {
+                files: [
+                    {
+                        expand: true,
+                        src: 'src/md/*.md',
+                        dest: 'dist/views/blog/entries/',
+                        ext: '.html',
+                        flatten: true
+                    }
+                ],
+                options: {
+                    markdownOptions: {
+                        gfm: true
+                    }
+                }
+            }
+        },
         sass: {
             dist: {
                 options: {
@@ -49,8 +67,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-markdown');
 
     /* === Register Tasks === */
     grunt.registerTask('default', ['concat', 'sass', 'watch']);
-    grunt.registerTask('deploy', ['concat', 'sass', 'uglify'])
+    grunt.registerTask('deploy', function() {
+        grunt.task.run(['concat', 'sass', 'uglify']);
+    });
 };

@@ -25,9 +25,16 @@ exports.addEntry = function(req, res) {
     var entry = new Entry();
 
     entry.title = req.body.title;
-    entry.date = Date().now;
     entry.text = req.body.text;
-    entry.images = req.body.images;
+    entry.slug = req.body.slug;
+
+    if (req.body.publishedDate) {
+        entry.publishedDate = req.body.publishedDate;
+        entry.editedDate = Date.now();
+    } else {
+        entry.publishedDate = Date.now();
+        entry.editedDate = null;
+    }
 
     entry.save(function(err, entry) {
         if (err)

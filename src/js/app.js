@@ -27,7 +27,7 @@ function Config ($stateProvider, $urlRouterProvider, $locationProvider) {
             controllerAs: 'main',
             resolve: {
                 getEntries: function($http) {
-                    return $http({method: 'GET', url: 'entries.json'});
+                    return $http({method: 'GET', url: '/v1/entries'});
                 }
             }
         })
