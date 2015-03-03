@@ -43,14 +43,6 @@ function Config ($stateProvider, $urlRouterProvider, $locationProvider) {
                     return 'views/blog/entries/' + $stateParams.title + '.html';
                 }
             }
-        })
-        
-        // Admin state
-        .state('admin', {
-            url: '/secret',
-            templateUrl: 'views/admin/admin.html',
-            controller: 'AdminCtrl',
-            controllerAs: 'admin'
         });
 
     // remove hashbang from url
