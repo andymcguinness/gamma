@@ -68,10 +68,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-markdown');
+    grunt.loadNpmTasks('grunt-newer');
 
     /* === Register Tasks === */
     grunt.registerTask('default', ['concat', 'sass', 'watch']);
     grunt.registerTask('deploy', function() {
         grunt.task.run(['concat', 'sass', 'uglify']);
+        grunt.task.run(['newer:markdown']);
     });
 };
