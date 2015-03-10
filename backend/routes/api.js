@@ -20,21 +20,23 @@ exports.getEntries = function(req, res) {
     });
 };
 
+// GET /v1/entry
+exports.getEntry = function(req, res) {
+    Entry.findOne({slug: req.params.slug}, function(err, entry) {
+        if (err)
+            res.send(err);
+
+        res.json(entry);
+    });
+};
+
 // POST /v1/entries
 exports.addEntry = function(req, res) {
     var entry = new Entry();
 
     entry.title = req.body.title;
-    entry.text = req.body.text;
     entry.slug = req.body.slug;
-
-    if (req.body.publishedDate) {
-        entry.publishedDate = req.body.publishedDate;
-        entry.editedDate = Date.now();
-    } else {
-        entry.publishedDate = Date.now();
-        entry.editedDate = null;
-    }
+    entry.publishedDate = Date.now();
 
     entry.save(function(err, entry) {
         if (err)

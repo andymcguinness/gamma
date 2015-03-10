@@ -14,9 +14,7 @@ var Schema = mongoose.Schema;
 var EntrySchema = new Schema ({
     title: String,
     publishedDate: Date,
-    editedDate: Date,
-    slug: String,
-    text: String
+    slug: String
 });
 
 /* Export Model */

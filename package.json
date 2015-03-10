@@ -16,6 +16,8 @@
     "grunt-contrib-watch": "^0.6.1",
     "mongoose": "^3.6.20",
     "grunt-markdown": "^0.7.0",
-    "grunt-newer": "^1.1.0"
+    "grunt-newer": "^1.1.0",
+    "yaml-front-matter": "^3.2.3",
+    "request": "^2.53.0"
   }
 }

@@ -17,7 +17,7 @@ var http            = require('http');                  // for starting the serv
 var mongoose        = require('mongoose');              // for the backend
 var routes          = require('./backend/routes');      // for routing
 var api             = require('./backend/routes/api');  // include the api
-var Entry           = require('./backend/models/entry.js') // include Entry model
+var Entry           = require('./backend/models/entry.js'); // include Entry model
 
 // feeling POSTal
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -36,6 +36,7 @@ app.get('/', routes.index);
 
 // api shenanigans
 app.get('/v1/entries', api.getEntries);
+app.get('/v1/entry/:slug', api.getEntry);
 app.post('/v1/entries', api.addEntry);
 
 // should all else fail
@@ -47,7 +48,7 @@ var db = mongoose.connection;
 
 db.on('error', console.error);
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/gammadb');
 
 
 /* === Start the Engines === */
