@@ -122,16 +122,23 @@ module.exports = function(grunt) {
                     if (!res) {
                         request.post({url: 'http://localhost:8080/v1/entries', json: true, body: {slug: result.slug, title: result.title}}, function (err, httpMessage, res) {
                             if (err)
-                                return console.log('error: ' + err);
+                                return console.log('Error: ' + err);
                             else
                                 return console.log('Success!: ' + res.message);
                             done();
                         });
                     } else {
                         if (res.title != result.title) {
-                            // perform some file updating here
+                            request.put({url: 'http://localhost:8080/v1/entries/' + result.slug, json: true, body: {slug: result.slug, title: result.title}}, function (err, httpMessage, res) {
+                                if (err)
+                                    return console.log('Error: ' + err);
+                                else
+                                    return console.log('Success!: ' + res.message);
+                                done();
+                            });
+                        } else {
+                            done();
                         }
-                        done();
                     }
                 }
             });

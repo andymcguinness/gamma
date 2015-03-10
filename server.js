@@ -38,6 +38,7 @@ app.get('/', routes.index);
 app.get('/v1/entries', api.getEntries);
 app.get('/v1/entry/:slug', api.getEntry);
 app.post('/v1/entries', api.addEntry);
+app.put('/v1/entries/:slug', api.updateEntry);
 
 // should all else fail
 app.get('*', routes.index);

@@ -45,3 +45,15 @@ exports.addEntry = function(req, res) {
         res.json({ message: 'Entry created!' });
     });
 };
+
+// PUT /v1/entries
+exports.updateEntry = function(req, res) {
+    Entry.findOne({slug: req.params.slug}, function(err, entry) {
+        if (err)
+            res.send(err);
+
+        entry.title = req.body.title;
+        entry.save();
+        res.json({ message: 'Entry updated!' });
+    });
+};
