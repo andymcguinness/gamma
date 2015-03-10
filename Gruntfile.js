@@ -108,7 +108,7 @@ module.exports = function(grunt) {
 
             var req_options = {
                 json: true,
-                url: 'http://0.0.0.0:8080/v1/entry/' + result.slug,
+                url: 'http://localhost:8080/v1/entry/' + result.slug,
                 headers: {
                     'content-type': 'application/json'
                 }
@@ -120,7 +120,7 @@ module.exports = function(grunt) {
                 }
                 else {
                     if (!res) {
-                        request.post({url: 'http://0.0.0.0:8080/v1/entries', json: true, body: {slug: result.slug, title: result.title}}, function (err, httpMessage, res) {
+                        request.post({url: 'http://localhost:8080/v1/entries', json: true, body: {slug: result.slug, title: result.title}}, function (err, httpMessage, res) {
                             if (err)
                                 return console.log('error: ' + err);
                             else
@@ -135,7 +135,7 @@ module.exports = function(grunt) {
                     }
                 }
             });
-            grunt.task.run(['newer:markdown']);
         });
+        grunt.task.run(['newer:markdown']);
     });
 };
