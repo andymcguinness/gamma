@@ -34,13 +34,13 @@ function Config ($stateProvider, $urlRouterProvider, $locationProvider) {
         
         // Blog state
         .state('blog', {
-            url: '/blog/:title',
+            url: '/blog/:slug',
             templateUrl: 'views/blog/blog-main.html',
             controller: 'BlogCtrl',
             controllerAs: 'blog',
             resolve: {
                 getPartial: function($stateParams) {
-                    return 'views/blog/entries/' + $stateParams.title + '.html';
+                    return 'views/blog/entries/' + $stateParams.slug + '.html';
                 }
             }
         });
