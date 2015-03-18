@@ -22,7 +22,7 @@ exports.getEntries = function(req, res) {
 
 // GET /v1/entries/:slug
 exports.getEntry = function(req, res) {
-    Entry.findOne({slug: req.params.slug}, function(err, entry) {
+    Entry.findOne({filename: req.params.filename}, function(err, entry) {
         if (err)
             res.send(err);
 
@@ -38,6 +38,7 @@ exports.addEntry = function(req, res) {
     entry.title = req.body.title;
     entry.slug = req.body.slug;
     entry.publishedDate = date;
+    entry.filename = req.body.filename;
 
     entry.save(function(err, entry) {
         if (err)
@@ -49,11 +50,12 @@ exports.addEntry = function(req, res) {
 
 // PUT /v1/entries/:slug
 exports.updateEntry = function(req, res) {
-    Entry.findOne({slug: req.params.slug}, function(err, entry) {
+    Entry.findOne({filename: req.params.filename}, function(err, entry) {
         if (err)
             res.send(err);
 
         entry.title = req.body.title;
+        entry.slug = req.body.slug;
         entry.save();
         res.json({ message: 'Entry updated!' });
     });
@@ -61,7 +63,7 @@ exports.updateEntry = function(req, res) {
 
 // DELETE /v1/entries/:slug
 exports.deleteEntry = function(req, res) {
-    Entry.findOneAndRemove({slug: req.params.slug}, function(err, entry) {
+    Entry.findOneAndRemove({filename: req.params.filename}, function(err, entry) {
         if (err)
             res.send(err);
 
