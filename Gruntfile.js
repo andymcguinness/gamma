@@ -127,21 +127,66 @@ module.exports = function(grunt) {
             encoding: 'utf-8'
         });
 
+        // default GET options
+        var req_options = {
+            json: true,
+            headers: {
+                'content-type': 'application/json'
+            }
+        };
+
+        // defining our files holder
+        var fileObj = {};
+
+        req_options.url = 'http://localhost:8080/v1/entries/';
+        request.get(req_options, function (err, httpMessage, res) {
+            if (err) {
+                console.log('Error: ' + err);
+            } else {
+                fileObj = res;
+            }
+        });
+
         this.files.forEach(function(file) {
             
             // function to cross-ref files in the dest dir with files in the src dir
-            var deleteRecurse = function (abspath, rootdir, subdir, filename) {
+            function deleteRecurse (abspath, rootdir, subdir, filename) {
+                // ignore .gitignore
                 if (filename == ".gitignore")
                     return;
                 
+                // if the file has been deleted
                 if (searchForFile(filename.replace('html', 'md'), file.src) == -1) {
+                    // delete the html file
                     grunt.file.delete(abspath);
 
-                    // db stuffz goes here
+                    // delete the entry from the db
+                    req_options.url = 'http://localhost:8080/v1/entries/' + filename.replace('html', 'md');
+                    request.get(req_options, function (err, httpMessage, res) {
+                        if (err) {
+                            console.log('Error: ' + err);
+                        } else {
+                            // if we got nothing back, no corresponding entry in the db
+                            if (!res) {
+                                console.log('Entry does not exist.');
+                            } else { // otherwise, we have work to do
+                                req_options.url = 'http://localhost:8080/v1/entries/' + filename.replace('html', 'md');
+                                // fire off the deletion request
+                                console.log('firing off delete request');
+                                request.del(req_options, function (err, httpMessage, res) {
+                                    if (err) {
+                                        console.log('Error: ' + err);
+                                    } else {
+                                        console.log('Success!: ' + res.message);
+                                    }
+                                });
+                            }
+                        }
+                    });
                 }
-            };
+            }
             
-            var createRecurse = function() {
+            function createRecurse () {
                 // remove files that exist
                 var newFiles = file.src.filter(function(filepath){
                     if (!grunt.file.exists(file.dest + filepath.split('/').pop().replace('md', 'html'))) {
@@ -152,13 +197,26 @@ module.exports = function(grunt) {
                 });
 
                 // insert file info into the db here
-            };
+                newFiles.forEach(function(file) {
+                    // reads each file and gets the contents
+                    var contents = grunt.file.read(file);
+                    // parses out the YAML frontmatter
+                    var result = yamlFront.loadFront(contents);
+
+                    // shoves it in the db
+                    request.post({url: 'http://localhost:8080/v1/entries', json: true, body: {slug: result.slug, title: result.title, filepath: file.split('/').pop()}}, function (err, httpMessage, res) {
+                        if (err)
+                            return console.log('Error: ' + err);
+                        else
+                            return console.log('Success!: ' + res.message);
+                    });
+                });
+            }
 
             // perform our DELETE first
             grunt.file.recurse(file.dest, deleteRecurse);
             // then do our creation
             createRecurse();
-            // then do our updating
         });
 
         // tells grunt to move on
