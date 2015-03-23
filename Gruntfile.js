@@ -157,12 +157,10 @@ module.exports = function(grunt) {
                 
                 // if the file has been deleted
                 if (searchForFile(filename.replace('html', 'md'), file.src) == -1) {
-                    // delete the html file
-                    grunt.file.delete(abspath);
-
                     // delete the entry from the db
                     req_options.url = 'http://localhost:8080/v1/entries/' + filename.replace('html', 'md');
-                    request.get(req_options, function (err, httpMessage, res) {
+                    request.get({url: req_options.url, json: true}, function (err, httpMessage, res) {
+                        console.log('in the get request')
                         if (err) {
                             console.log('Error: ' + err);
                         } else {
@@ -173,7 +171,7 @@ module.exports = function(grunt) {
                                 req_options.url = 'http://localhost:8080/v1/entries/' + filename.replace('html', 'md');
                                 // fire off the deletion request
                                 console.log('firing off delete request');
-                                request.del(req_options, function (err, httpMessage, res) {
+                                request.del({url: req_options.url}, function (err, httpMessage, res) {
                                     if (err) {
                                         console.log('Error: ' + err);
                                     } else {
@@ -183,6 +181,10 @@ module.exports = function(grunt) {
                             }
                         }
                     });
+
+                    // delete the html file
+                    console.log('deleting file')
+                    grunt.file.delete(abspath);
                 }
             }
             
