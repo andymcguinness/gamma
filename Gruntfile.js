@@ -117,7 +117,6 @@ module.exports = function(grunt) {
         
         // to search through my array of src files
         function searchForFile (str, arr) {
-            if (arr.length == 0) return -1;
             for (var j = 0; j<arr.length; j++) {
                 if (arr[j].match(str)) return j;
             }
@@ -157,7 +156,7 @@ module.exports = function(grunt) {
                 if (filename == ".gitignore")
                     return;
                 
-                // if the file has been deleted
+                :/ if the file has been deleted
                 if (searchForFile(filename.replace('html', 'md'), file.src) == -1) {
                     // delete the entry from the db
                     var url = 'http://localhost:8080/v1/entries/' + filename.replace('html', 'md');
@@ -200,27 +199,34 @@ module.exports = function(grunt) {
                     }
                 });
 
-                // insert file info into the db here
-                newFiles.forEach(function(file) {
-                    // reads each file and gets the contents
-                    var contents = grunt.file.read(file);
-                    // parses out the YAML frontmatter
-                    var result = yamlFront.loadFront(contents);
+                if (newFiles.length > 0) {
+                    // insert file info into the db here
+                    newFiles.forEach(function(file) {
+                        // reads each file and gets the contents
+                        var contents = grunt.file.read(file);
+                        // parses out the YAML frontmatter
+                        var result = yamlFront.loadFront(contents);
 
-                    // shoves it in the db
-                    request.post({url: 'http://localhost:8080/v1/entries', json: true, body: {slug: result.slug, title: result.title, filepath: file.split('/').pop()}}, function (err, httpMessage, res) {
-                        if (err)
-                            return console.log('Error: ' + err);
-                        else
-                            return console.log('Success!: ' + res.message);
+                        // shoves it in the db
+                        request.post({url: 'http://localhost:8080/v1/entries', json: true, body: {slug: result.slug, title: result.title, filepath: file.split('/').pop()}}, function (err, httpMessage, res) {
+                            if (err) {
+                                return console.log('Error: ' + err);
+                            } else {
+                                return console.log('Success!: ' + res.message);
+                            }
+                        });
                     });
-                });
+                }
+            }
+            
+            function test () {
+                console.log('done');
+                done();
             }
 
             var gruntFile = Promise.promisifyAll(grunt.file);
-            
             // perform our DELETE first
-            gruntFile.recurseAsync(file.dest, deleteRecurse, '').then(createRecurse()).then(function() { done(); }).catch(function(e){ console.log(e.stack); });
+            gruntFile.recurseAsync(file.dest, deleteRecurse, '').then(createRecurse).then(test).catch(function(e){ console.log(e.stack); });
             // then do our creation
         });
 
