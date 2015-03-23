@@ -18,6 +18,8 @@
     "grunt-markdown": "^0.7.0",
     "grunt-newer": "^1.1.0",
     "yaml-front-matter": "^3.2.3",
-    "request": "^2.53.0"
+    "request": "^2.53.0",
+    "q": "^1.2.0",
+    "bluebird": "^2.9.14"
   }
 }

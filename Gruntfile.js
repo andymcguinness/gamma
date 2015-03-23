@@ -9,6 +9,7 @@
 /* === Basic Variables === */
 var yamlFront   = require('yaml-front-matter');     // will parse through files and pull out the YAML frontmatter
 var request     = require('request');               // will make requests to our API routes
+var Promise     = require('bluebird');                     // will include promises library
 
 /* === Setting Up Grunt === */
 module.exports = function(grunt) {
@@ -116,6 +117,7 @@ module.exports = function(grunt) {
         
         // to search through my array of src files
         function searchForFile (str, arr) {
+            if (arr.length == 0) return -1;
             for (var j = 0; j<arr.length; j++) {
                 if (arr[j].match(str)) return j;
             }
@@ -158,8 +160,8 @@ module.exports = function(grunt) {
                 // if the file has been deleted
                 if (searchForFile(filename.replace('html', 'md'), file.src) == -1) {
                     // delete the entry from the db
-                    req_options.url = 'http://localhost:8080/v1/entries/' + filename.replace('html', 'md');
-                    request.get({url: req_options.url, json: true}, function (err, httpMessage, res) {
+                    var url = 'http://localhost:8080/v1/entries/' + filename.replace('html', 'md');
+                    request.get({url: url, json: true}, function (err, httpMessage, res) {
                         console.log('in the get request')
                         if (err) {
                             console.log('Error: ' + err);
@@ -180,11 +182,11 @@ module.exports = function(grunt) {
                                 });
                             }
                         }
-                    });
 
-                    // delete the html file
-                    console.log('deleting file')
-                    grunt.file.delete(abspath);
+                        // delete the html file
+                        console.log('deleting file')
+                        grunt.file.delete(abspath);
+                    });
                 }
             }
             
@@ -215,14 +217,14 @@ module.exports = function(grunt) {
                 });
             }
 
+            var gruntFile = Promise.promisifyAll(grunt.file);
+            
             // perform our DELETE first
-            grunt.file.recurse(file.dest, deleteRecurse);
+            gruntFile.recurseAsync(file.dest, deleteRecurse, '').then(createRecurse()).then(function() { done(); }).catch(function(e){ console.log(e.stack); });
             // then do our creation
-            createRecurse();
         });
 
         // tells grunt to move on
-        done();
 
         // Iterate over all specified file groups.
         // this.filesSrc.forEach(function(filepath) {
@@ -315,6 +317,5 @@ module.exports = function(grunt) {
         //     }
         // });
         // after all those shenanigans, parse the MD and compile the resultant HTML
-        grunt.task.run(['newer:markdown']);
     });
 };
