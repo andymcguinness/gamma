@@ -13,3 +13,6 @@ node_modules/
 
 # grunt-contrib-sass
 .sass-cache/
+
+# css mapping
+dist/main.css.map
