@@ -1,0 +1,16 @@
+/**
+ * File: mixins.scss
+ * Description: Defines the mixins for the application
+ * Dependencies: none
+ *
+ * @package gamma
+ */
+
+/* === Vendor Prefix Mixin === */
+@mixin vendor-prefix($name, $argument) {
+  -webkit-#{$name}: #{$argument};
+     -moz-#{$name}: #{$argument};
+      -ms-#{$name}: #{$argument};
+       -o-#{$name}: #{$argument};
+          #{$name}: #{$argument};
+}
