@@ -1,5 +1,6 @@
-<p ng-bind="main.msg"></p>
+<section class="page page--home">
+  <ul class="entries-list">
+      <li ng-repeat="entry in main.entries" class="entries-list__entry entry"><span ng-bind="entry.publishedDate"></span><a ui-sref="blog({slug: entry.slug})" ng-bind="entry.title"></a></li>
+  </ul>
+</section>
 
-<ul>
-    <li ng-repeat="entry in main.entries"><span ng-bind="entry.publishedDate"></span><a ui-sref="blog({slug: entry.slug})" ng-bind="entry.title"></a></li>
-</ul>

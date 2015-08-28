@@ -9,7 +9,7 @@
 /* === Headings === */
 %heading {
   color: $black;
-  font-family: 'proxima-nova-soft', 'Arial', sans-serif;
+  font-family: 'proxima-nova', 'Arial', sans-serif;
 }
 h1 {
   @extend %heading;
@@ -48,5 +48,5 @@ h6 {
 /* === Body Copy === */
 p,
 span,
-a { font-family: 'proxima-nova-soft', 'Arial', sans-serif; }
+a { font-family: 'proxima-nova', 'Arial', sans-serif; }
 body { font-size: .8rem; }
