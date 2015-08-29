@@ -20,6 +20,7 @@
     "yaml-front-matter": "^3.2.3",
     "request": "^2.53.0",
     "q": "^1.2.0",
-    "bluebird": "^2.9.14"
+    "bluebird": "^2.9.14",
+    "bower": "^1.5.2"
   }
 }

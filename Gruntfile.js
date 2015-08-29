@@ -25,7 +25,7 @@ module.exports = function(grunt) {
         footer: '})();'
       },
       dist: {
-        src: ['src/js/app.js', 'src/js/**/*.js'],
+        src: ['bower_components/angular/angular.min.js', 'bower_components/**/*.min.js', 'bower_components/**/**/*.min.js', 'src/js/app.js', 'src/js/**/*.js'],
         dest: 'dist/scripts.js'
       }
     },

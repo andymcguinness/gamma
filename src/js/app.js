@@ -43,6 +43,30 @@ function Config ($stateProvider, $urlRouterProvider, $locationProvider) {
                     return 'views/blog/entries/' + $stateParams.slug + '.html';
                 }
             }
+        })
+
+        // About state
+        .state('about', {
+            url: '/about',
+            templateUrl: 'views/about/about.html',
+            controller: 'AboutCtrl',
+            controllerAs: 'about'
+        })
+
+        // Contact state
+        .state('contact', {
+            url: '/contact',
+            templateUrl: 'views/contact/contact.html',
+            controller: 'ContactCtrl',
+            controllerAs: 'contact'
+        })
+
+        // Contact state
+        .state('vimrc', {
+            url: '/vimrc',
+            templateUrl: 'views/vimrc/vimrc.html',
+            controller: 'VimrcCtrl',
+            controllerAs: 'vimrc'
         });
 
     // remove hashbang from url

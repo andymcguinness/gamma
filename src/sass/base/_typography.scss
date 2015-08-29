@@ -48,5 +48,11 @@ h6 {
 /* === Body Copy === */
 p,
 span,
-a { font-family: 'proxima-nova', 'Arial', sans-serif; }
-body { font-size: .8rem; }
+a {
+  color: $black;
+  font-family: 'proxima-nova', 'Arial', sans-serif;
+}
+body {
+  color: $black;
+  font-size: .8rem;
+}

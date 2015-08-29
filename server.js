@@ -28,6 +28,7 @@ var port            = process.env.PORT || 8080;
 
 // sets where static files live
 app.use(express.static(__dirname + '/dist/'));
+app.use(express.static(__dirname + '/bower_components/'));
 
 
 /* === Routing === */
