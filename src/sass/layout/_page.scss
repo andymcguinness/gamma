@@ -1,0 +1,25 @@
+/**
+ * File: page.scss
+ * Description: Defines the styles for the basic page layout
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+/* === Main Wrapper === */
+.page-wrapper { width: calc(100% - 250px); }
+.page {
+  padding-top: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+}
+
+/* === Inner Wrapper === */
+.page-inner {
+  display: inline-block;
+  float: none;
+}
+
+/* === Page Content === */
+.page__title { margin-bottom: 1rem; }

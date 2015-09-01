@@ -19,24 +19,24 @@
 }
 
 // Colors
-.link.brown {
-  @extend %link;
-
-  border-bottom-color: $brown;
-
-  &:hover { color: $brown; }
-}
-.link.teal {
-  @extend %link;
-
-  border-bottom-color: $teal;
-
-  &:hover { color: $teal; }
-}
 .link.blue {
   @extend %link;
 
   border-bottom-color: $blue;
 
   &:hover { color: $blue; }
+}
+.link.yellow {
+  @extend %link;
+
+  border-bottom-color: $yellow;
+
+  &:hover { color: $yellow; }
+}
+.link.red {
+  @extend %link;
+
+  border-bottom-color: $red;
+
+  &:hover { color: $red; }
 }

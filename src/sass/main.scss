@@ -28,9 +28,12 @@
 /* Grid, header, footer, sidebar, forms, parts of pages */
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/page';
+@import 'layout/sidebar';
 
 /* === Pages === */
 /* Specific styles for individual pages */
+@import 'pages/blog';
 
 /* === Themes === */
 /* Any themes, like light/dark */

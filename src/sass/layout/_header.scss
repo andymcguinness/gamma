@@ -8,10 +8,7 @@
 
 /* === Main Styles === */
 .header {
-  float: none;
-  margin-right: auto;
-  margin-left: auto;
-  padding-top: 2rem;
+  padding-top: 1rem;
   text-align: center;
 }
 
@@ -20,11 +17,20 @@
   float: none;
   margin-right: auto;
   margin-left: auto;
-  max-width: 128px;
+  max-width: 100px;
   width: auto;
 }
-.header__title { margin-top: .5rem; }
-.header__subtitle { margin-top: .25rem; }
+.header__title {
+  margin-top: .5rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+.header__subtitle {
+  margin-top: .25rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  line-height: 1.2;
+}
 
 /* === Nav Content === */
 .main-nav {
@@ -33,8 +39,70 @@
 }
 .main-nav__nav-item {
   display: inline-block;
-  float: none;
-  margin-right: .5rem;
-  margin-left: .5rem;
-  width: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-decoration: none;
+
+  &.link {
+    border-bottom: none;
+    overflow: hidden;
+
+    &:before {
+      content: ' ';
+      position: absolute;
+      top: 0;
+      left: -60%;
+      z-index: 0;
+      display: block;
+      height: 100%;
+      width: 55%;
+      @include vendor-prefix(transform, "skew(12deg)");
+      @include vendor-prefix(transition, "left .3s ease-in");
+   } 
+   &:after {
+      content: ' ';
+      position: absolute;
+      top: 0;
+      right: -60%;
+      z-index: 0;
+      display: block;
+      height: 100%;
+      width: 55%;
+      @include vendor-prefix(transform, "skew(12deg)");
+      @include vendor-prefix(transition, "right .3s ease-in");
+   }
+   &:hover:before { left: -5%; }
+   &:hover:after { right: -5%; }
+  }
+  &.link.blue {
+
+    &:before { background: $blue; } 
+    &:after { background: $blue; }
+    .main-nav__nav-item-content {
+      color: $blue;
+      @include vendor-prefix(transition, "color .3s ease-in");
+    }
+    &:hover .main-nav__nav-item-content { color: darken($blue, 50%); }
+  }
+  &.link.yellow {
+
+    &:before { background: $yellow; } 
+    &:after { background: $yellow; }
+    .main-nav__nav-item-content {
+      color: $yellow;
+      @include vendor-prefix(transition, "color .3s ease-in");
+    }
+    &:hover .main-nav__nav-item-content { color: darken($yellow, 50%); }
+  }
+  &.link.red {
+    
+    &:before { background: $red; } 
+    &:after { background: $red; }
+    .main-nav__nav-item-content {
+      color: $red;
+      @include vendor-prefix(transition, "color .3s ease-in");
+    }
+    &:hover .main-nav__nav-item-content { color: darken($red, 50%); }
+  }
 }
+.main-nav__nav-item-content { z-index: 1; }

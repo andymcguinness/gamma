@@ -1,6 +1,9 @@
 <section class="page page--home">
-  <ul class="entries-list">
-      <li ng-repeat="entry in main.entries" class="entries-list__entry entry"><span ng-bind="entry.publishedDate"></span><a ui-sref="blog({slug: entry.slug})" ng-bind="entry.title"></a></li>
-  </ul>
+  <div class="page-inner">
+    <h2 class="page__title">Blog</h2>
+    <ul class="entries-list">
+      <li ng-repeat="entry in main.entries" class="entries-list__entry entry"><span class="entry__date" ng-bind="entry.publishedDate | date:'MM.dd.yyyy'"></span><a class="entry__link link" ui-sref="blog({slug: entry.slug})" ng-bind="entry.title" ng-class="{blue: $index % 3 == 0, yellow: $index % 3 != 0 && $index % 2 == 0, red: $index % 3 != 0 && $index % 2 != 0}"></a></li>
+    </ul>
+  </div>
 </section>
 
