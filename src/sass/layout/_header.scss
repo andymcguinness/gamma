@@ -36,73 +36,12 @@
 .main-nav {
   margin-top: 1rem;
   padding-bottom: .5rem;
+  text-align: center;
 }
 .main-nav__nav-item {
+  clear: both;
   display: inline-block;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  float: none;
   text-decoration: none;
-
-  &.link {
-    border-bottom: none;
-    overflow: hidden;
-
-    &:before {
-      content: ' ';
-      position: absolute;
-      top: 0;
-      left: -60%;
-      z-index: 0;
-      display: block;
-      height: 100%;
-      width: 55%;
-      @include vendor-prefix(transform, "skew(12deg)");
-      @include vendor-prefix(transition, "left .3s ease-in");
-   } 
-   &:after {
-      content: ' ';
-      position: absolute;
-      top: 0;
-      right: -60%;
-      z-index: 0;
-      display: block;
-      height: 100%;
-      width: 55%;
-      @include vendor-prefix(transform, "skew(12deg)");
-      @include vendor-prefix(transition, "right .3s ease-in");
-   }
-   &:hover:before { left: -5%; }
-   &:hover:after { right: -5%; }
-  }
-  &.link.blue {
-
-    &:before { background: $blue; } 
-    &:after { background: $blue; }
-    .main-nav__nav-item-content {
-      color: $blue;
-      @include vendor-prefix(transition, "color .3s ease-in");
-    }
-    &:hover .main-nav__nav-item-content { color: darken($blue, 50%); }
-  }
-  &.link.yellow {
-
-    &:before { background: $yellow; } 
-    &:after { background: $yellow; }
-    .main-nav__nav-item-content {
-      color: $yellow;
-      @include vendor-prefix(transition, "color .3s ease-in");
-    }
-    &:hover .main-nav__nav-item-content { color: darken($yellow, 50%); }
-  }
-  &.link.red {
-    
-    &:before { background: $red; } 
-    &:after { background: $red; }
-    .main-nav__nav-item-content {
-      color: $red;
-      @include vendor-prefix(transition, "color .3s ease-in");
-    }
-    &:hover .main-nav__nav-item-content { color: darken($red, 50%); }
-  }
 }
 .main-nav__nav-item-content { z-index: 1; }
