@@ -1,5 +1,7 @@
 module.exports = function (grunt) {
 	grunt.registerTask('prod', [
+                'mark_from_db',
+                'mark_to_db',
 		'compileAssets',
 		'concat',
 		'uglify',

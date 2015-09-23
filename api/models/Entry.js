@@ -8,7 +8,18 @@
 module.exports = {
 
   attributes: {
-
+    title: {
+      type: 'string'
+    },
+    slug: {
+      type: 'string'
+    },
+    filename: {
+      type: 'string'
+    },
+    contents: {
+      type: 'text'
+    }
   }
 };
 

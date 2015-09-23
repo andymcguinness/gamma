@@ -19,6 +19,9 @@ module.exports = {
 
   models: {
     connection: 'mongoDB'
+  },
+  log: {
+    level: 'verbose'
   }
 
 };
