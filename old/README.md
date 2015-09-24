@@ -1,4 +1,4 @@
-# gamma
+# Gamma -- Thrice the Fun
 
 Welcome to the third installment of my personal site. There's not a lot here yet, but it sure does work! Sorta anyways.
 
@@ -30,8 +30,7 @@ The git repo is organized using a variation on the git-flow workflow; the 'main'
 * **0.0.0**: Hello, world!
 * **0.0.1**: Basic Grunt functionality incorporated.
 * **0.0.2**: Basic blogging functionality incorporated. Nothing was automated, and everything hurt.
-* **0.1.0**: Migrated to Sails, basic blogging functionality updated
 
 ## 4 -- Colophon
 
-I'm [Andy McGuinness](http://andymcguinness.com), and I [build stuff](https://github.com/andymcguinness). This pile of code is licensed under the please-don't-steal-my-code-but-please-do-have-a-look-about license. I mean if you're really that inspired to do something with this code, at least let me in on it.
+I'm [Maia McGuinness](http://maiamcguinness.com), and I [build stuff](https://github.com/maiamcguinness). This pile of code is licensed under the please-don't-steal-my-code-but-please-do-have-a-look-about license. I mean if you're really that inspired to do something with this code, at least let me in on it.

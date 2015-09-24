@@ -1,284 +1,80 @@
 /**
- * File: Gruntfile.js
- * Description: Grunt taskrunner for the project
- * Dependencies: See package.json
+ * Gruntfile
  *
- * @package gamma
+ * This Node script is executed when you run `grunt` or `sails lift`.
+ * It's purpose is to load the Grunt tasks in your project's `tasks`
+ * folder, and allow you to add and remove tasks as you see fit.
+ * For more information on how this works, check out the `README.md`
+ * file that was generated in your `tasks` folder.
+ *
+ * WARNING:
+ * Unless you know what you're doing, you shouldn't change this file.
+ * Check out the `tasks` directory instead.
  */
 
-/* === Basic Variables === */
-var yamlFront   = require('yaml-front-matter');     // will parse through files and pull out the YAML frontmatter
-var request     = require('request');               // will make requests to our API routes
-var Promise     = require('bluebird');                     // will include promises library
-
-/* === Setting Up Grunt === */
 module.exports = function(grunt) {
-  /* === Initial Config === */
-  grunt.initConfig({
-    // where the package file is located
-    pkg: grunt.file.readJSON('package.json'),
 
-    // combining all our JS into one file and wrapping it in an IIFE
-    concat: {
-      options: {
-        banner: '(function() {',
-        footer: '})();'
-      },
-      dist: {
-        src: ['src/js/app.js', 'src/js/**/*.js'],
-        dest: 'dist/scripts.js'
-      }
-    },
+	// Load the include-all library in order to require all of our grunt
+	// configurations and task registrations dynamically.
+	var includeAll;
+	try {
+		includeAll = require('include-all');
+	} catch (e0) {
+		try {
+			includeAll = require('sails/node_modules/include-all');
+		}
+		catch(e1) {
+			console.error('Could not find `include-all` module.');
+			console.error('Skipping grunt tasks...');
+			console.error('To fix this, please run:');
+			console.error('npm install include-all --save`');
+			console.error();
 
-    // telling our custom plugin where to find the source markdown files and their compiled counterparts
-    mark_to_db: {
-      all: {
-        files: [
-          {
-            src: ['src/md/*.md', 'src/md/**/*.md'],
-            dest: 'dist/views/blog/entries/'
-          }
-        ]
-      }
-    },
+			grunt.registerTask('default', []);
+			return;
+		}
+	}
 
-    mark_from_db: {
-      all: {
-        files: [
-          {
-            src: 'dist/views/blog/entries/*.html',
-            dest: 'src/md/'
-          }
-        ]
-      }
-    },
 
-    // tells the markdown parser where to look for our files, and strips the YAML frontmatter off before parsing
-    markdown: {
-      all: {
-        files: [
-          {
-            expand: true,
-            src: 'src/md/*.md',
-            dest: 'dist/views/blog/entries/',
-            ext: '.html',
-            flatten: true
-          }
-        ],
-        options: {
-          template: 'src/html-template/template.html',
-          markdownOptions: {
-            gfm: true
-          },
-          preCompile: function(src, context) {
-            var result = yamlFront.loadFront(src);
-            return src = result.__content;
-          }
-        }
-      }
-    },
+	/**
+	 * Loads Grunt configuration modules from the specified
+	 * relative path. These modules should export a function
+	 * that, when run, should either load/configure or register
+	 * a Grunt task.
+	 */
+	function loadTasks(relPath) {
+		return includeAll({
+			dirname: require('path').resolve(__dirname, relPath),
+			filter: /(.+)\.js$/
+		}) || {};
+	}
 
-    // compiling our SASS
-    sass: {
-      dist: {
-        options: {
-          style: 'expanded'
-        },
-        files: {
-          'dist/main.css': 'src/sass/main.scss' 
-        }
-      }
-    },
+	/**
+	 * Invokes the function from a Grunt configuration module with
+	 * a single argument - the `grunt` object.
+	 */
+	function invokeConfigFn(tasks) {
+		for (var taskName in tasks) {
+			if (tasks.hasOwnProperty(taskName)) {
+				tasks[taskName](grunt);
+			}
+		}
+	}
 
-    // uglifies concatenated JS on the deploy function
-    uglify: {
-      build: {
-        src: 'dist/scripts.js',
-        dest: 'dist/scripts.min.js'
-      }
-    },
 
-    // watches for changes in SASS or JS files and recompiles as necessary
-    watch: {
-      scripts: {
-        files: ['src/sass/*.scss', 'src/sass/*/*.scss', 'src/js/*.js', 'src/js/**/*.js', 'src/md/*.md', 'src/md/**/*.md'],
-        tasks: ['sass', 'concat', 'mark_to_db', 'mark_from_db', 'newer:markdown']
-      }
-    }
-  });
 
-  /* === Loading Plugins === */
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-markdown');
-  grunt.loadNpmTasks('grunt-newer');
 
-  /* === Register Tasks === */
-  // the basic grunt task -- if I'm working on the Angular functionality or styling
-  grunt.registerTask('default', ['concat', 'sass', 'mark_to_db', 'mark_from_db', 'newer:markdown', 'watch']);
+	// Load task functions
+	var taskConfigurations = loadTasks('./tasks/config'),
+		registerDefinitions = loadTasks('./tasks/register');
 
-  // the deploy grunt task -- when I want to prepare scripts for production and generate entries
-  grunt.registerTask('deploy', ['concat', 'sass', 'uglify', 'mark_to_db', 'mark_from_db', 'newer:markdown']);
+	// (ensure that a default task exists)
+	if (!registerDefinitions.default) {
+		registerDefinitions.default = function (grunt) { grunt.registerTask('default', []); };
+	}
 
-  // custom grunt task -- where the magic happens!
-  grunt.registerMultiTask('mark_to_db', 'Grunt plugin to read YAML frontmatter and insert data into a database via an API url.', function() {
-    var done = this.async();    // telling Grunt this is going to involve asynchronous tasks
+	// Run task functions to configure Grunt.
+	invokeConfigFn(taskConfigurations);
+	invokeConfigFn(registerDefinitions);
 
-    // default options object
-    var options = this.options({
-      encoding: 'utf-8'
-    });
-
-    // default GET options
-    var req_options = {
-      json: true,
-      headers: {
-        'content-type': 'application/json'
-      }
-    };
-
-    // defining our files holder
-    var fileObj = {};
-
-    req_options.url = 'http://localhost:8080/v1/entries/';
-    request.get(req_options, function (err, httpMessage, res) {
-      if (err) {
-        console.log('Error: ' + err);
-      } else {
-        fileObj = res;
-      }
-    });
-
-    this.files.forEach(function(file) {
-
-      function createRecurse () {
-        // remove files that exist
-        var newFiles = file.src.filter(function(filepath){
-          if (!grunt.file.exists(file.dest + filepath.split('/').pop().replace('md', 'html')) && filepath.split('/').pop() !== '.gitignore') {
-            return true;
-          } else {
-            return false;
-          }
-        });
-
-        if (newFiles.length > 0) {
-          // insert file info into the db here
-          newFiles.forEach(function(file, index, arr) {
-            // reads each file and gets the contents
-            var contents = grunt.file.read(file);
-            // parses out the YAML frontmatter
-            var result = yamlFront.loadFront(contents);
-
-            // shoves it in the db
-            request.post({url: 'http://localhost:8080/v1/entries', json: true, body: {slug: result.slug, title: result.title, filepath: file.split('/').pop()}}, function (err, httpMessage, res) {
-              if (err) {
-                if (index === (arr.length - 1)) {
-                  done();
-                }
-                return console.log('Error: ' + err);
-              } else {
-                if (index === (arr.length - 1)) {
-                  done();
-                }
-                return console.log('Success!: ' + res.message);
-              }
-            });
-          });
-        } else {
-          done();
-        }
-      }
-
-      createRecurse();
-    });
-  });
-
-  // custom grunt task -- where the magic happens!
-  grunt.registerMultiTask('mark_from_db', 'Grunt plugin to check for deleted posts and remove them via an API url.', function() {
-    var done = this.async();    // telling Grunt this is going to involve asynchronous tasks
-
-    // default options object
-    var options = this.options({
-      encoding: 'utf-8'
-    });
-
-    // default GET options
-    var req_options = {
-      json: true,
-      headers: {
-        'content-type': 'application/json'
-      }
-    };
-
-    // defining our files holder
-    var fileObj = {};
-
-    req_options.url = 'http://localhost:8080/v1/entries/';
-
-    this.files.forEach(function(file) {
-
-      // function to cross-ref files in the dest dir with files in the src dir
-      function deleteRecurse () {
-
-        // remove files that exist
-        var deletedFiles = file.src.filter(function(filepath){
-          if (!grunt.file.exists(file.dest + filepath.split('/').pop().replace('html', 'md')) && filepath.split('/').pop() !== '.gitignore') {
-            return true;
-          } else {
-            return false;
-          }
-        });
-
-        if (deletedFiles.length > 0) {
-          // insert file info into the db here
-          deletedFiles.forEach(function(file, index, arr) {
-
-            // delete the entry from the db
-            var url = 'http://localhost:8080/v1/entries/' + file.split('/').pop().replace('html', 'md');
-            request.get({url: url, json: true}, function (err, httpMessage, res) {
-              console.log('in the get request')
-              if (err) {
-                console.log('Error: ' + err);
-                if (index === (arr.length - 1)) {
-                  done();
-                }
-              } else {
-                // if we got nothing back, no corresponding entry in the db
-                if (!res) {
-                  console.log('Entry does not exist.');
-                  if (index === (arr.length - 1)) {
-                    done();
-                  }
-                } else { // otherwise, we have work to do
-                  req_options.url = 'http://localhost:8080/v1/entries/' + file.split('/').pop().replace('html', 'md');
-                  // fire off the deletion request
-                  console.log('firing off delete request');
-                  request.del({url: req_options.url}, function (err, httpMessage, res) {
-                    if (err) {
-                      console.log('Error: ' + err);
-                    } else {
-                      console.log('Success!: ' + res.message);
-                    }
-                  });
-                }
-              }
-
-              // delete the html file
-              console.log('deleting file')
-              grunt.file.delete(file);
-              if (index === (arr.length - 1)) {
-                done();
-              }
-            });
-          });
-        } else {
-          done();
-        }
-      }
-
-      deleteRecurse();
-    });
-  });
 };

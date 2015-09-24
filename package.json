@@ -1,25 +1,44 @@
 {
   "name": "gamma",
-  "main": "server.js",
+  "private": true,
+  "version": "0.1.0",
+  "description": "The third iteration of my current website",
+  "keywords": [],
   "dependencies": {
-    "express": "~4.0.0",
-    "mongoose": "~3.6.13",
-    "body-parser": "~1.0.1",
-    "morgan": "~1.4.0",
-    "method-override": "~2.3.0"
+    "bluebird": "^2.10.1",
+    "ejs": "~0.8.4",
+    "forever": "^0.15.1",
+    "grunt": "0.4.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-coffee": "~0.10.1",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "grunt-contrib-jst": "~0.6.0",
+    "grunt-contrib-less": "0.11.1",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-sails-linker": "~0.9.5",
+    "grunt-sync": "~0.0.4",
+    "include-all": "~0.1.3",
+    "markdown": "^0.5.0",
+    "rc": "~0.5.0",
+    "request": "^2.63.0",
+    "sails": "~0.11.0",
+    "sails-auth": "^2.0.0",
+    "sails-disk": "~0.10.0",
+    "sails-mongo": "^0.11.4",
+    "yaml-front-matter": "^3.2.3"
   },
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-uglify": "^0.6.0",
-    "grunt-contrib-concat": "^0.5.0",
-    "grunt-contrib-sass": "^0.8.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "mongoose": "^3.6.20",
-    "grunt-markdown": "^0.7.0",
-    "grunt-newer": "^1.1.0",
-    "yaml-front-matter": "^3.2.3",
-    "request": "^2.53.0",
-    "q": "^1.2.0",
-    "bluebird": "^2.9.14"
-  }
+  "scripts": {
+    "debug": "node debug app.js",
+    "start": "node app.js"
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/andymcguinness/gamma.git"
+  },
+  "author": "Andy McGuinness",
+  "license": "MIT"
 }

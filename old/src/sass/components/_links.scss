@@ -1,0 +1,42 @@
+/**
+ * File: links.scss
+ * Description: Styles for the site's links
+ * Dependencies: none
+ *
+ * @package gamma
+ */
+
+/* === Text Link Styles === */
+// Base
+%link {
+  color: $black;
+  font-family: 'proxima-nova', Arial, sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  @include vendor-prefix(transition, 'color .3s ease');
+}
+
+// Colors
+.link.blue {
+  @extend %link;
+
+  border-bottom-color: $blue;
+
+  &:hover { color: $blue; }
+}
+.link.yellow {
+  @extend %link;
+
+  border-bottom-color: $yellow;
+
+  &:hover { color: $yellow; }
+}
+.link.red {
+  @extend %link;
+
+  border-bottom-color: $red;
+
+  &:hover { color: $red; }
+}

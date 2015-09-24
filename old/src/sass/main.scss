@@ -1,0 +1,40 @@
+/**
+ * File: main.scss
+ * Description: Sourcemap for the project
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+/* === Vendor === */
+/* Any vendor dependencies */
+
+/* === Helpers === */
+/* Vendor prefix functions, mixins, colors, breakpoints */
+@import 'helpers/colors';
+@import 'helpers/mixins';
+
+/* === Base === */
+/* Reset/typography */
+@import 'base/general';
+@import 'base/reset';
+@import 'base/typography';
+
+/* === Components === */
+/* Buttons, dropdowns, carousels */
+@import 'components/buttons';
+@import 'components/links';
+
+/* === Layout === */
+/* Grid, header, footer, sidebar, forms, parts of pages */
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/page';
+@import 'layout/sidebar';
+
+/* === Pages === */
+/* Specific styles for individual pages */
+@import 'pages/blog';
+
+/* === Themes === */
+/* Any themes, like light/dark */

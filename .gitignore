@@ -16,3 +16,9 @@ node_modules/
 
 # css mapping
 dist/main.css.map
+
+# OSX files
+.DS_Store
+
+# Sails Temp Dir
+.tmp/

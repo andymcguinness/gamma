@@ -1,0 +1,47 @@
+/**
+ * File: header.scss
+ * Description: Defines the styles for the header of the site
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+/* === Main Styles === */
+.header {
+  padding-top: 1rem;
+  text-align: center;
+}
+
+/* === Header Content === */
+.header__logo {
+  float: none;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 100px;
+  width: auto;
+}
+.header__title {
+  margin-top: .5rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+.header__subtitle {
+  margin-top: .25rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  line-height: 1.2;
+}
+
+/* === Nav Content === */
+.main-nav {
+  margin-top: 1rem;
+  padding-bottom: .5rem;
+  text-align: center;
+}
+.main-nav__nav-item {
+  clear: both;
+  display: inline-block;
+  float: none;
+  text-decoration: none;
+}
+.main-nav__nav-item-content { z-index: 1; }

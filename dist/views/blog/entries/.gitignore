@@ -1,8 +1,0 @@
-# File: dist/views/entries/.gitignore
-# Description: Totally unnecessary, just keeping here to keep this folder committed
-# Dependencies: none
-#
-# @package gamma
-
-# Ignoring current directory
-*
