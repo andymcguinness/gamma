@@ -1,0 +1,68 @@
+/**
+ * File: reset.scss
+ * Description: Basic reset for the framework
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+/* === General Reset === */
+* {
+  /* Positioning */
+  position: relative;
+  vertical-align: inherit;
+
+  /* Box Model */
+  display: block;
+  float: left;
+  height: auto;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  width: 100%;
+  @include vendor-prefix('box-sizing', 'border-box');
+
+  /* Typography */
+  font-family: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  font-weight: inherit;
+  word-spacing: normal;
+  word-wrap: break-word;
+  
+  /* Visual */
+  background: transparent;
+  border: none;
+  list-style: none;
+  outline: none;
+
+  /* Misc */
+  -moz-osx-font-smoothing: grayscale;
+   -webkit-font-smoothing: antialiased;
+}
+
+/* === Fixing Things After Reset === */
+script,
+style,
+meta,
+title { display: none; }
+br,
+i,
+b,
+span,
+s,
+.icon,
+strong,
+b,
+em,
+sup,
+li a{
+  float: none;
+  width: auto;
+  display: inline;
+}

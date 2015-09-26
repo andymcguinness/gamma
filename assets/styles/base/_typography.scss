@@ -1,0 +1,58 @@
+/**
+ * File: fonts.scss
+ * Description: Defines the fonts for the application
+ * Dependencies: Neuton, Alegreya Sans
+ *
+ * @package gamma
+ */
+
+/* === Headings === */
+%heading {
+  color: $black;
+  font-family: 'proxima-nova', 'Arial', sans-serif;
+}
+h1 {
+  @extend %heading;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 2rem;
+  text-transform: uppercase;
+}
+h2 {
+  @extend %heading;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-transform: uppercase;
+}
+h3 {
+  @extend %heading;
+  font-size: 1.2rem;
+  line-height: 1rem;
+}
+h4 {
+  @extend %heading;
+  font-size: .9rem;
+  line-height: 1rem;
+}
+h5 {
+  @extend %heading;
+  font-size: .7rem;
+  line-height: 1rem;
+}
+h6 {
+  @extend %heading;
+  font-size: .6rem;
+  line-height: 1rem;
+}
+
+/* === Body Copy === */
+p,
+span,
+a {
+  color: $black;
+  font-family: 'proxima-nova', 'Arial', sans-serif;
+}
+body {
+  color: $black;
+  font-size: .8rem;
+}

@@ -1,0 +1,17 @@
+/**
+ * File: sidebar.scss
+ * Description: Styles for the sidebar
+ * Dependencies: none
+ *
+ * @package gamma
+ */
+
+/* === Main Wrapper Styles === */
+.sidebar {
+  float: left;
+  height: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 15.5rem;
+  background: $lightgrey;
+}
