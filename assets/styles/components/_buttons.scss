@@ -1,0 +1,85 @@
+/**
+ * File: buttons.scss
+ * Description: Styles for the site's buttons
+ * Dependencies: none
+ *
+ * @package gamma
+ */
+
+/* === Button Styles === */
+// Base
+%button {
+  padding-top: .5rem;
+  padding-right: 1rem;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  width: auto;
+  font-family: 'proxima-nova', Arial, sans-serif;
+  text-decoration: none;
+  border: .05rem solid transparent;
+  @include vendor-prefix('border-radius', '.25rem');
+  @include vendor-prefix(transition, 'color .3s ease');
+
+  p,
+  span,
+  a { @include vendor-prefix(transition, 'color .3s ease'); }
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: ' ';
+    display: block;
+    height: 100%;
+    margin-left: 10%;
+    width: 80%;
+    opacity: 0;
+    @include vendor-prefix(transition, 'opacity .3s ease, margin-left .3s ease, width .3s ease');
+  }
+  &:hover {
+    color: $white;
+
+    p,
+    span,
+    a { color: $white; }
+    &:before {
+      margin-left: 0;
+      width: 100%;
+      opacity: 1;
+    }
+  }
+}
+
+// Colors
+.button.blue {
+  @extend %button;
+
+  color: $blue;
+  border-color: $blue;
+
+  p,
+  span,
+  a { color: $blue; }
+  &:before { background-color: $blue; }
+}
+.button.yellow {
+  @extend %button;
+
+  color: $yellow;
+  border-color: $yellow;
+
+  p,
+  span,
+  a { color: $yellow; }
+  &:before { background-color: $yellow; }
+}
+.button.red {
+  @extend %button;
+
+ color: $red;
+ border-color: $red;
+
+  p,
+  span,
+  a { color: $red; }
+  &:before { background-color: $red; } 
+}

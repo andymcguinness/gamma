@@ -1,0 +1,17 @@
+/**
+ * File: general.scss
+ * Description: Includes basics for the project
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+html {
+  height: 100%;
+  font-size: 20px;
+}
+body {
+  height: 100%;
+  line-height: 1.4;
+  background: $white;
+}

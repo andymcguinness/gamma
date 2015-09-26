@@ -33,8 +33,9 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
-  }
+    controller: 'EntryController',
+    action: 'homepage'
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -46,4 +47,34 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  // Blog Route
+  '/blog/:slug': {
+    controller: 'EntryController',
+    action: 'post'
+  },
+
+  // Portfolio Route
+  '/work': {
+    controller: 'PortfolioController',
+    action: 'portfolio'
+  },
+  '/work/:slug': {
+    controller: 'PortfolioController',
+    action: 'item'
+  },
+
+  // About Route
+  '/about': {
+    view: 'about/about'
+  },
+
+  // Contact Route
+  '/contact': {
+    view: 'contact/contact'
+  },
+
+  // Vimrc Route
+  '/vimrc': {
+    view: 'vimrc/vimrc'
+  }
 };

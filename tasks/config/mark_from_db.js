@@ -1,11 +1,24 @@
 module.exports  = function(grunt) {
   grunt.config.set('mark_from_db', {
-    all: {
+    entries: {
       files: [
         {
           src: ['entries/**/*.md']
         }
-      ]
+      ],
+      options: {
+        api: 'entry'
+      }
+    },
+    items: {
+      files: [
+        {
+          src: ['items/*', 'items/**/*.md']
+        }
+      ],
+      options: {
+        api: 'portfolio'
+      }
     }
   });
 
@@ -27,6 +40,7 @@ module.exports  = function(grunt) {
     };
 
     var fileObj = {};
+    var api = this.options().api;
 
     if (this.files.length > 0) {
       this.files.forEach(function(file) {
@@ -43,7 +57,7 @@ module.exports  = function(grunt) {
             var newFiles = [];
           }
 
-          var url = 'http://localhost:1337/entry';
+          var url = 'http://localhost:1337/' + api;
           request.get({url: url, json: true}, function (err, httpMessage, files) {
             if (err) {
               console.log('Error: ' + err);
@@ -61,7 +75,7 @@ module.exports  = function(grunt) {
                   var result = search(files[i].filename, newFiles);  
                   
                   if (!result) {
-                    var delUrl = 'http://localhost:1337/entry/' + files[i].id;
+                    var delUrl = 'http://localhost:1337/' + api + files[i].id;
                     request.del({url: delUrl, json: true}, function (err, httpMessage, res) {
                       if (err) {
                         console.log('Error: ' + err);

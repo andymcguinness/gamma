@@ -1,0 +1,225 @@
+<% include ../common/header %>
+
+<section class="page page--vimrc">
+  <div class="page-inner vimrc">
+    <div class="line">
+      <span class="line-number">1</span>
+      <span class="comment">" VIMRC</span>
+    </div>
+    <div class="line">
+      <span class="line-number">2</span>
+      <span class="comment">"</span>
+    </div>
+    <div class="line">
+      <span class="line-number">3</span>
+      <span class="comment">" by Andy McGuinness</span>
+    </div>
+    <div class="line">
+      <span class="line-number">4</span>
+    </div>
+    <div class="line">
+      <span class="line-number">5</span>
+      <span class="comment">" === VUNDLE SETTINGS === "</span>
+    </div>
+    <div class="line">
+      <span class="line-number">6</span>
+      <span class="comment">" basic settings</span>
+    </div>
+    <div class="line">
+      <span class="line-number">7</span>
+      <span class="statement">set</span> <span class="preproc">nocompatible</span>
+    </div>
+    <div class="line">
+      <span class="line-number">8</span>
+      <span class="statement">filetype</span> <span class="type">off</span>
+    </div>
+    <div class="line">
+      <span class="line-number">9</span>
+      <span class="statement">set</span> <span class="preproc">rtp</span><span>+=~/.vim/bundle/Vundle.vim</span>
+    </div>
+    <div class="line">
+      <span class="line-number">10</span>
+      <span class="statement">call</span> <span>vundle#begin</span><span class="statement">()</span>
+    </div>
+    <div class="line">
+      <span class="line-number">11</span>
+      <span>Plugin</span> <span class="constant">'gmarik/Vundle.vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">12</span>
+    </div>
+    <div class="line">
+      <span class="line-number">13</span>
+      <span class="comment">" plugins</span>
+    </div>
+    <div class="line">
+      <span class="line-number">14</span>
+      <span>Plugin</span> <span class="constant">'1995eaton/vim-better-css-completion'</span><span>,</span> <span class="preproc">{</span> <span class="constant">'for'</span> <span>:</span> <span class="constant">'css'</span> <span class="preproc">}</span>
+    </div>
+    <div class="line">
+      <span class="line-number">15</span>
+      <span>Plugin</span> <span class="constant">'1995eaton/vim-better-javascript-completion'</span><span>,</span> <span class="preproc">{</span> <span class="constant">'for'</span> <span>:</span> <span class="constant">'javascript'</span> <span class="preproc">}</span>
+    </div>
+    <div class="line">
+      <span class="line-number">16</span>
+      <span>Plugin</span> <span class="constant">'airblade/vim-gitgutter'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">17</span>
+      <span>Plugin</span> <span class="constant">'ap/vim-css-color'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">18</span>
+      <span>Plugin</span> <span class="constant">'bling/vim-airline'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">19</span>
+      <span>Plugin</span> <span class="constant">'Chiel92/vim-autoformat'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">20</span>
+      <span>Plugin</span> <span class="constant">'docunext/closetag.vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">21</span>
+      <span>Plugin</span> <span class="constant">'dsawardekar/wordpress.vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">22</span>
+      <span>Plugin</span> <span class="constant">'freitass/todo.txt-vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">23</span>
+      <span>Plugin</span> <span class="constant">'godlygeek/tabular'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">24</span>
+      <span>Plugin</span> <span class="constant">'elzr/vim-json'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">25</span>
+      <span>Plugin</span> <span class="constant">'hail2u/vim-css3-syntax'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">26</span>
+      <span>Plugin</span> <span class="constant">'jszakmeister/markdown2ctags'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">27</span>
+      <span>Plugin</span> <span class="constant">'JulesWang/css.vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">28</span>
+      <span>Plugin</span> <span class="constant">'kchmck/vim-coffee-script'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">29</span>
+      <span>Plugin</span> <span class="constant">'Lokaltog/vim-easymotion'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">30</span>
+      <span>Plugin</span> <span class="constant">'majutsushi/tagbar'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">31</span>
+      <span>Plugin</span> <span class="constant">'MarcWeber/vim-addon-mw-utils'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">32</span>
+      <span>Plugin</span> <span class="constant">'marijnh/tern_for_vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">33</span>
+      <span>Plugin</span> <span class="constant">'mattn/emmet-vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">34</span>
+      <span>Plugin</span> <span class="constant">'morhetz/gruvbox'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">35</span>
+      <span>Plugin</span> <span class="constant">'msanders/snipmate.vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">36</span>
+      <span>Plugin</span> <span class="constant">'nathanaelkane/vim-indent-guides'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">37</span>
+      <span>Plugin</span> <span class="constant">'pangloss/vim-javascript'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">38</span>
+      <span>Plugin</span> <span class="constant">'othree/javascript-libraries-syntax.vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">39</span>
+      <span>Plugin</span> <span class="constant">'plasticboy/vim-markdown'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">40</span>
+      <span>Plugin</span> <span class="constant">'Raimondi/delimitMate'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">41</span>
+      <span>Plugin</span> <span class="constant">'rking/ag.vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">42</span>
+      <span>Plugin</span> <span class="constant">'scrooloose/nerdtree'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">43</span>
+      <span>Plugin</span> <span class="constant">'StanAngeloff/php.vim'</span><span>,</span> <span class="preproc">{</span> <span class="constant">'for'</span> <span>:</span> <span class="constant">'php'</span> <span class="preproc">}</span>
+    </div>
+    <div class="line">
+      <span class="line-number">44</span>
+      <span>Plugin</span> <span class="constant">'terryma/vim-multiple-cursors'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">45</span>
+      <span>Plugin</span> <span class="constant">'tomtom/tcomment_vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">46</span>
+      <span>Plugin</span> <span class="constant">'tomtom/tlib_vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">47</span>
+      <span>Plugin</span> <span class="constant">'tpope/vim-fugitive'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">48</span>
+      <span>Plugin</span> <span class="constant">'tpope/vim-haml'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">49</span>
+      <span>Plugin</span> <span class="constant">'vim-php/tagbar-phpctags/vim'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">50</span>
+      <span>Plugin</span> <span class="constant">'xolox/vim-misc'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">51</span>
+      <span>Plugin</span> <span class="constant">'xolox/vim-notes'</span>
+    </div>
+    <div class="line">
+      <span class="line-number">52</span>
+    </div>
+    <div class="line">
+      <span class="line-number">53</span>
+      <span class="comment">" various calls</span>
+    </div>
+    <div class="line">
+      <span class="line-number">54</span>
+      <span class="statement">call</span> <span>vundle#end</span><span class="preproc">()</span> <span class="comment">" required</span>
+    </div>
+    <div class="line">
+      <span class="line-number">55</span>
+      <span class="statement">filetype</span> <span class="type">plugin indent on</span> <span class="comment">" required</span>
+    </div>
+  </div>
+</section>
+
+<% include ../common/footer %>

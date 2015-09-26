@@ -1,11 +1,24 @@
 module.exports  = function(grunt) {
   grunt.config.set('mark_to_db', {
-    all: {
+    entries: {
       files: [
         {
           src: ['entries/**/*.md']
         }
-      ]
+      ],
+      options: {
+        api: 'entry'
+      }
+    },
+    items: {
+      files: [
+        {
+          src: ['items/**/*.md']
+        }
+      ],
+      options: {
+        api: 'portfolio'
+      }
     }
   });
 
@@ -29,6 +42,7 @@ module.exports  = function(grunt) {
     };
 
     var fileObj = {};
+    var api = this.options().api;
 
     this.files.forEach(function(file) {
       function createRecurse () {
@@ -46,7 +60,7 @@ module.exports  = function(grunt) {
             var yamlFrontMatter = yamlFront.loadFront(fileContents);
             yamlFrontMatter.content = markdown.toHTML(yamlFrontMatter.__content, 'Gruber');
 
-            var url = 'http://localhost:1337/entry?filename=' + file.split('/').pop();
+            var url = 'http://localhost:1337/' + api + '?filename=' + file.split('/').pop();
             request.get({url: url, json: true}, function (err, httpMessage, res) {
               if (err) {
                 console.log('Error: ' + err);
@@ -71,7 +85,7 @@ module.exports  = function(grunt) {
                     for (var i = 0; i < errors.length; i++) {
                       updates[errors[i]] = yamlFrontMatter[errors[i]];
                     }
-                    request.put({url: 'http://localhost:1337/entry', json: true, body: updates}, function (err, httpMessage, res) {
+                    request.put({url: 'http://localhost:1337/' + api + '/' + res[0].id, json: true, body: updates}, function (err, httpMessage, res) {
                       if (err) {
                         if (index === (arr.length - 1)) {
                           done();
@@ -81,7 +95,7 @@ module.exports  = function(grunt) {
                         if (index === (arr.length - 1)) {
                           done();
                         }
-                        return console.log('Success!: ' + res.message);
+                        return console.log('Success!');
                       }
                     });
                   } else {
@@ -90,7 +104,7 @@ module.exports  = function(grunt) {
                     }
                   }
                 } else {
-                  request.post({url: 'http://localhost:1337/entry', json: true, body: {slug: yamlFrontMatter.slug, title: yamlFrontMatter.title, filename: file.split('/').pop(), content: yamlFrontMatter.content}}, function (err, httpMessage, res) {
+                  request.post({url: 'http://localhost:1337/' + api, json: true, body: {slug: yamlFrontMatter.slug, title: yamlFrontMatter.title, filename: file.split('/').pop(), content: yamlFrontMatter.content}}, function (err, httpMessage, res) {
                     if (err) {
                       if (index === (arr.length - 1)) {
                         done();

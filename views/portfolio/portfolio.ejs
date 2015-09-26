@@ -1,0 +1,7 @@
+<% include ../common/header %>
+<ul>
+  <% for(var i=0; i < items.length; i++) {%>
+  <li><a href="/work/<%= items[i].slug %>"><%= items[i].title %></a></li>
+  <% } %>
+</ul>
+<% include ../common/footer %>
