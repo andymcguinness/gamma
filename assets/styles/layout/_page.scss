@@ -7,8 +7,11 @@
  */
 
 /* === Main Wrapper === */
-.page-wrapper { width: calc(100% - 310px); }
 .page {
+  float: none;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 49rem;
   padding-top: 2rem;
   padding-right: 2rem;
   padding-bottom: 2rem;
@@ -22,4 +25,8 @@
 }
 
 /* === Page Content === */
-.page__title { margin-bottom: 1rem; }
+.page__title {
+  float: none;
+  margin-bottom: 1rem;
+}
+.page__content { float: none; }

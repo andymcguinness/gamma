@@ -1,9 +1,9 @@
-<% include ../common/header %>
+<section class="page page--home">
+  <h2 class="page__title">Ramblings of a Developer</h2>
 
-<ul>
-  <% for(var i=0; i< entries.length; i++) {%>
-  <li><a href="/blog/<%= entries[i].slug %>"><%= entries[i].title %></a></li>
-  <% } %>
-</ul>
-
-<% include ../common/footer %>
+  <ul class="blog-entries page__content">
+    <% for(var i=0; i< entries.length; i++) {%>
+    <li class="blog-entries__entry"><a href="/blog/<%= entries[i].slug %>"><%= entries[i].title %></a></li>
+    <% } %>
+  </ul>
+</section>

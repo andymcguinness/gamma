@@ -9,39 +9,70 @@
 /* === Main Styles === */
 .header {
   padding-top: 1rem;
+  padding-bottom: 20rem;
   text-align: center;
+  background-color: #000;
+  background-image: url('/images/technology.jpg');
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 /* === Header Content === */
-.header__logo {
+// Nav
+.main-nav {
   float: none;
   margin-right: auto;
+  margin-bottom: 4rem;
   margin-left: auto;
-  max-width: 100px;
-  width: auto;
-}
-.header__title {
-  margin-top: .5rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
-}
-.header__subtitle {
-  margin-top: .25rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  line-height: 1.2;
-}
-
-/* === Nav Content === */
-.main-nav {
-  margin-top: 1rem;
-  padding-bottom: .5rem;
+  max-width: 49rem;
   text-align: center;
 }
+.main-nav__left,
+.main-nav__right { width: 50%; }
 .main-nav__nav-item {
   clear: both;
   display: inline-block;
   float: none;
+  width: 25%;
   text-decoration: none;
 }
-.main-nav__nav-item-content { z-index: 1; }
+.main-nav__nav-item-content {
+  z-index: 1;
+  color: $white;
+  font-size: .8rem;
+  font-weight: bold;
+}
+
+// Logo
+.logo {
+  float: none;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 4rem;
+  width: auto;
+  border: .25rem solid $white;
+}
+.logo__link {
+  display: inline-block;
+  float: none;
+  text-decoration: none;
+}
+.logo__a,
+.logo__n,
+.logo__d,
+.logo__y {
+  color: $white;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+// Subtitle
+.header__subtitle {
+  margin-top: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  color: $white;
+  font-weight: bold;
+  line-height: 1.2;
+}
