@@ -1,0 +1,15 @@
+/**
+ * File: home.scss
+ * Description: Defines the styles for the home page
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+/* === Basic Styles === */
+.home {
+  text-align: center;
+
+  .page__content { text-align: center; }
+}
+.home__section { margin-bottom: 2rem; }

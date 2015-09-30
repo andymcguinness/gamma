@@ -1,12 +1,22 @@
 <header class="header">
-  <img class="header__logo" src="/images/logo.png" alt="Andy McGuinness' Logo">
-  <h1 class="header__title">My Name Is Andy</h1>
-  <p class="header__subtitle">...and I'm a web developer in Chicago.</p>
-
   <nav class="header__nav main-nav">
-    <a href="/" title="Home" class="main-nav__nav-item button blue"><span class="main-nav__nav-item-content">Home</span></a> 
-    <a href="/about" title="About" class="main-nav__nav-item button yellow"><span class="main-nav__nav-item-content">About</span></a> 
-    <a href="/contact" title="Contact" class="main-nav__nav-item button red"><span class="main-nav__nav-item-content">Contact</span></a> 
-    <a href="/vimrc" title=".Vimrc" class="main-nav__nav-item button blue"><span class="main-nav__nav-item-content">.Vimrc</span></a> 
+    <div class="main-nav__left">
+      <a href="/" title="home" class="main-nav__nav-item"><span class="main-nav__nav-item-content">home</span></a> 
+      <a href="/work" title="work" class="main-nav__nav-item"><span class="main-nav__nav-item-content">work</span></a> 
+    </div>
+    <div class="main-nav__right">
+      <a href="/about" title="about" class="main-nav__nav-item"><span class="main-nav__nav-item-content">about</span></a> 
+      <a href="/contact" title="contact" class="main-nav__nav-item"><span class="main-nav__nav-item-content">contact</span></a> 
+    </div>
   </nav>
+
+  <div class="header__logo logo">
+    <a href="/" title="home" class="logo__link">
+      <span class="logo__a">A</span>
+      <span class="logo__n">N</span>
+      <span class="logo__d">D</span>
+      <span class="logo__y">Y</span>
+    </a>
+  </div>
+  <p class="header__subtitle">A Chicago-based web developer.</p>
 </header>

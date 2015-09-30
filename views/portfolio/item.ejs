@@ -1,7 +1,14 @@
-<% include ../common/header %>
+<section class="page page--portfolio_item">
+  <h2 class="page__title">Things I've Done</h2>
 
-<h2><%= item.title %></h2>
-
-<%- item.content %>
-
-<% include ../common/footer %>
+  <div class="page__content portfolio-item">
+    <h3 class="portfolio-item__title"><%= item.title %></h3>
+    <div class="portfolio-item__meta">
+      <p class="portfolio-item__client"><strong>Client:</strong> <%= item.client %></p>
+      <p class="portfolio-item__role"><strong>Role:</strong> <%= item.role %></p>
+      <p class="portfolio-item__tech"><strong>Technology:</strong> <%= item.technology %></p>
+    </div>
+    <img src="<%= item.featured_image %>" class="portfolio-item__image" alt="Item Main Image" />
+    <div class="portfolio-item__content"><%- item.content %></div>
+  </div>
+</section>

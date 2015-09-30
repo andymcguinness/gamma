@@ -1,7 +1,15 @@
-<% include ../common/header %>
+<section class="page page--blog_post">
+  <h2 class="page__title">Ramblings of a Developer</h2>
 
-<h2><%= entry.title %></h2>
-
-<%- entry.content %>
-
-<% include ../common/footer %>
+  <div class="page__content post">
+    <div class="post__category post__category--<%= entry.category %>">
+      <i class="am-<%= entry.category %> post__category-icon"></i>
+    </div>
+    <h3 class="post__title"><%= entry.title %></h3>
+    <div class="post__meta">
+      <span class="post__posted">posted on <%= (new Date(entry.createdAt)).toDateString() %></span>
+    </div>
+    <img src="<%= entry.featured_image %>" class="post__image" alt="Entry Main Image" />
+    <div class="post__content"><%- entry.content %></div>
+  </div>
+</section>

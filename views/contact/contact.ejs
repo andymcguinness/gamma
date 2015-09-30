@@ -1,10 +1,21 @@
-<% include ../common/header %>
-
-<section class="page page--about">
+<section class="page page--contact">
   <div class="page-inner">
     <h2 class="page__title">Contact Andy</h2>
-    <p>This is my contact page.</p>
+    <div class="page__content">
+      <p>Shoot me a message if you'd like to get in contact with me!</p>
+
+      <form action="/contact" method="post" class="contact__form form">
+        <label for="name" class="form__label">Name:
+          <input type="text" class="form__input" id="name" name="name">
+        </label>
+        <label for="email" class="form__label">Email:
+          <input type="email" class="form__input" id="email" name="email">
+        </label>
+        <label for="message" class="form__label">Message:
+          <textarea class="form__textarea" id="message" name="message"></textarea>
+        </label>
+        <button type="submit" class="button blue form__submit">Submit</button>
+      </form>
+    </div>
   </div>
 </section>
-
-<% include ../common/footer %>

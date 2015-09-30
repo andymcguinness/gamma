@@ -1,0 +1,20 @@
+/**
+ * File: contact.scss
+ * Description: Defines the styles for the contact page
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+/* === Basic Styles === */
+.contact__result {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+.contact__info {
+  a {
+    display: inline;
+    float: none;
+    width: auto;
+  }
+}

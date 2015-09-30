@@ -22,3 +22,6 @@ dist/main.css.map
 
 # Sails Temp Dir
 .tmp/
+
+# .env file
+.env

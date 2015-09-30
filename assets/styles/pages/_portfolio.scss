@@ -1,0 +1,71 @@
+/**
+ * File: portfolio.scss
+ * Description: Defines the styles for the portfolio section
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+/* === Individual Item Styles === */
+// General
+.item {
+  margin-bottom: 1rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  text-align: left;
+  background: $white;
+
+   &:last-of-type { margin-bottom: 0; }
+}
+
+// Left Side
+.item__left {
+  width: 66%;
+  padding-right: .5rem;
+}
+.item__title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.item__meta {
+  .item__role,
+  .item__client,
+  .item__tech {
+    color: $grey;
+    float: left;
+    font-size: .75rem;
+    line-height: 1.2;
+
+    strong { font-size: .75rem; }
+  }
+}
+.item__excerpt {
+  margin-top: 1rem;
+
+  p {
+    margin-bottom: .5rem;
+    line-height: 1.2;
+
+    &:last-of-type { margin-bottom: 0; }
+  }
+}
+
+// Right Side
+.item__right {
+  padding-left: .5rem;
+  width: 34%;
+}
+.item__image { width: 100%; }
+
+// Read More
+.item__read-more {
+  clear: both;
+  display: inline-block;
+  float: left;
+  margin-top: 1rem;
+  width: auto;
+  font-size: .75rem;
+}

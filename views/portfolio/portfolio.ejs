@@ -1,7 +1,25 @@
-<% include ../common/header %>
-<ul>
-  <% for(var i=0; i < items.length; i++) {%>
-  <li><a href="/work/<%= items[i].slug %>"><%= items[i].title %></a></li>
-  <% } %>
-</ul>
-<% include ../common/footer %>
+<section class="page page--portfolio">
+  <div class="page__inner">
+    <h2 class="page__title">Things I've Done</h2>
+
+    <ul class="portfolio-items">
+      <% for(var i=0; i < items.length; i++) {%>
+      <li class="portfolio-items__item item">
+        <div class="item__left">
+          <a href="/work/<%= items[i].slug %>" class="item__title"><%= items[i].title %></a>
+          <div class="item__meta">
+            <p class="item__client"><strong>Client:</strong> <%= items[i].client %></p>
+            <p class="item__role"><strong>Role:</strong> <%= items[i].role %></p>
+            <p class="item__tech"><strong>Technology:</strong> <%= items[i].technology %></p>
+          </div>
+          <div class="item__excerpt"><%- items[i].excerpt %></div>
+          <a href="/work/<%= items[i].slug %>" title="Read More" class="item__read-more link blue">Read More</a>
+        </div>
+        <div class="item__right">
+          <img src="<%= items[i].featured_image %>" class="item__image" alt="Item Main Image" />
+        </div>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</section>

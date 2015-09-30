@@ -12,7 +12,13 @@
   </head>
 
   <body>
-    <%- body %>
+    <% include common/header %>
+
+    <div class="page-wrapper">
+      <%- body %>
+    </div>
+
+    <% include common/footer %>
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>

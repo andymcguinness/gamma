@@ -1,0 +1,116 @@
+/**
+ * File: about.scss
+ * Description: Defines the styles for the about page
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+/* === Intro Section === */
+.about__intro {
+  line-height: 1.2;
+
+  a {
+    display: inline;
+    float: none;
+    width: auto;
+  }
+}
+.about__pic {
+  width: 30%;
+  margin-right: 1rem;
+}
+
+/* === Skills Section === */
+.skill {
+  margin-bottom: 1.5rem;
+  width: 50%;
+
+  &.left { padding-right : 1rem; }
+  &.right { padding-left : 1rem; }
+}
+.skill__percentage {
+  margin-bottom: 1rem;
+  width: 100%;
+  border-right: .05rem solid $black;
+  border-bottom: .05rem solid $black; 
+  border-left: .05rem solid $black;
+
+  &:before {
+    position: absolute;
+    bottom: -.75rem;
+    left: 0;
+    content: 'beginner';
+    display: block;
+    font-family: 'proxima-nova', 'Arial', sans-serif;
+    font-size: .6rem;
+  }
+  &:after {
+    position: absolute;
+    right: 0;
+    bottom: -.75rem;
+    content: 'expert';
+    display: block;
+    font-family: 'proxima-nova', 'Arial', sans-serif;
+    font-size: .6rem;
+  }
+  span {
+    content: ' ';
+    display: block;
+    height: 1rem;
+  } 
+  &.one-hundred {
+    span { width: 100%; }
+  }
+  &.ninety {
+    span { width: 90%; }
+  }
+  &.seventy-five { 
+    span { width: 75%; }
+  }
+  &.sixty {
+    span { width: 60%; }
+  }
+  &.fifty {
+    span { width: 50%; }
+  }
+  &.forty {
+    span { width: 40%; }
+  }
+  &.twenty-five {
+    span { width: 25%; }
+  }
+  &.blue {
+    span { background: $blue; }
+  }
+  &.yellow {
+    span { background: $yellow; }
+  }
+  &.red {
+    span { background: $red; }
+  }
+  &.green {
+    span { background: $green; }
+  }
+}
+.skill__title {
+  clear: both;
+  width: 100%;
+  text-align: center;
+}
+
+/* === Resume Section === */
+.resume__experience {
+  margin-bottom: 2rem;
+  
+  &:last-of-type { margin-bottom: 0; }
+}
+.resume__job-title { font-weight: bold; }
+.resume__dates {
+  color: grey;
+  font-size: .75rem;
+}
+.resume__description {
+  margin-top: .75rem;
+  line-height: 1.2;
+}

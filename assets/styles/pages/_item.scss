@@ -1,0 +1,54 @@
+/**
+ * File: item.scss
+ * Description: Defines the styles for an individual portfolio item
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+/* === Individual Entry Styles === */
+// General
+.portfolio-item {
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  text-align: left;
+  background: $white;
+}
+
+// Title/Meta
+.portfolio-item__meta {
+  .portfolio-item__role,
+  .portfolio-item__client,
+  .portfolio-item__tech {
+    color: $grey;
+    float: left;
+    font-size: .75rem;
+    line-height: 1.2;
+
+    strong { font-size: .75rem; }
+  }
+}
+
+// Image
+.portfolio-item__image {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+// Content
+.portfolio-item__content {
+  margin-top: 1rem;
+
+  p {
+    margin-bottom: .5rem;
+
+    &:last-of-type { margin-bottom: 0; }
+  }
+  img {
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+  }
+}
+

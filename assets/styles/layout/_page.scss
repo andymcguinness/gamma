@@ -7,8 +7,10 @@
  */
 
 /* === Main Wrapper === */
-.page-wrapper { width: calc(100% - 310px); }
 .page {
+  display: inline-block;
+  float: none;
+  max-width: 49rem;
   padding-top: 2rem;
   padding-right: 2rem;
   padding-bottom: 2rem;
@@ -16,10 +18,29 @@
 }
 
 /* === Inner Wrapper === */
-.page-inner {
+.page__inner {
   display: inline-block;
-  float: none;
+  float: left;
 }
 
 /* === Page Content === */
-.page__title { margin-bottom: 1rem; }
+.page__title {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+.page__content {
+  padding-top:  1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  text-align: left;
+  background: $white;
+}
+.page__section {
+  margin-bottom: 2rem;
+
+  &:last-of-type { margin-bottom: 0; }
+}
+.page__subheader {
+  margin-bottom: 1rem;
+}
