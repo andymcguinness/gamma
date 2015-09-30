@@ -6,5 +6,10 @@
  * @package gamma
  */
 
-/* === Entry Styles === */
-.blog-entries__entry { float: none; }
+/* === Basic Styles === */
+.home {
+  text-align: center;
+
+  .page__content { text-align: center; }
+}
+.home__section { margin-bottom: 2rem; }

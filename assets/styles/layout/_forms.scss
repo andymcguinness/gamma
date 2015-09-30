@@ -1,0 +1,43 @@
+/**
+ * File: forms.scss
+ * Description: Styles for the site's forms
+ * Dependencies: none
+ *
+ * @package gamma
+ */
+
+/* === Form Outer Wrapper === */
+.form {
+  margin-top: 1rem;
+}
+
+/* === Form Contents === */
+.form__label {
+  margin-bottom: 1rem;
+  font-family: 'proxima-nova', 'Arial', sans-serif;
+  
+  &:last-of-type { margin-bottom: 0; }
+}
+.form__input,
+.form__textarea {
+  margin-top: .5rem;
+  padding-top: .25rem;
+  padding-right: .25rem;
+  padding-bottom: .25rem;
+  padding-left: .25rem;
+  font-size: .75rem;
+  border: 1px solid $mediumgrey;
+
+  &:focus {
+    background: $white;
+    border-color: $grey;
+  }
+}
+.form__textarea {
+  height: 4rem;
+  resize: none;
+}
+.form__submit {
+  float: right;
+  margin-top: 1rem;
+}

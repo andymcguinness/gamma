@@ -1,0 +1,26 @@
+<section class="page page--blog">
+  <div class="page__inner">
+    <h2 class="page__title">Ramblings of a Developer</h2>
+
+    <ul class="blog-entries">
+      <% for(var i=0; i< entries.length; i++) {%>
+      <li class="blog-entries__entry entry">
+        <div class="entry__category entry__category--<%= entries[i].category %>">
+          <i class="am-<%= entries[i].category %> entry__category-icon"></i>
+        </div>
+        <div class="entry__left">
+          <a href="/blog/<%= entries[i].slug %>" class="entry__title"><%= entries[i].title %></a>
+          <div class="entry__meta">
+            <span class="entry__posted">posted on <%= (new Date(entries[i].createdAt)).toDateString() %></span>
+          </div>
+          <div class="entry__excerpt"><%- entries[i].excerpt %></div>
+          <a href="/blog/<%= entries[i].slug %>" title="Read More" class="entry__read-more link blue">Read More</a>
+        </div>
+        <div class="entry__right">
+          <img src="<%= entries[i].featured_image %>" class="entry__image" alt="Entry Main Image" />
+        </div>
+      </li>
+      <% } %>
+    </ul>
+  </div>
+</section>

@@ -6,9 +6,9 @@
  */
 
 module.exports = {
-  homepage: function(req, res) {
+  blog: function(req, res) {
     Entry.find().exec(function(err, entries) {
-      return res.view('blog/homepage', {
+      return res.view('blog/blog', {
         entries: entries
       });
     }); 

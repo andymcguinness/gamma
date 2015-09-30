@@ -75,11 +75,11 @@ module.exports  = function(grunt) {
                   var result = search(files[i].filename, newFiles);  
                   
                   if (!result) {
-                    var delUrl = 'http://localhost:1337/' + api + files[i].id;
+                    var delUrl = 'http://localhost:1337/' + api + '/' + files[i].id;
                     request.del({url: delUrl, json: true}, function (err, httpMessage, res) {
                       if (err) {
                         console.log('Error: ' + err);
-                        if (files.pop().filename === res.filename) {
+                        if (files[files.length - 1].filename === res.filename) {
                           done();
                         }
                       } else {

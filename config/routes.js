@@ -34,7 +34,7 @@ module.exports.routes = {
 
   '/': {
     controller: 'EntryController',
-    action: 'homepage'
+    action: 'blog'
   },
 
   /***************************************************************************
@@ -69,9 +69,10 @@ module.exports.routes = {
   },
 
   // Contact Route
-  '/contact': {
+  'get /contact': {
     view: 'contact/contact'
   },
+  'post /contact': 'ContactController.contact',
 
   // Vimrc Route
   '/vimrc': {

@@ -40,3 +40,10 @@
 
   &:hover { color: $red; }
 }
+.link.green {
+  @extend %link;
+
+  border-bottom-color: $green;
+
+  &:hover { color: $green; }
+}

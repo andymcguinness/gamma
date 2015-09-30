@@ -1,0 +1,66 @@
+/**
+ * File: post.scss
+ * Description: Defines the styles for an individual blog post
+ * Dependencies: None
+ *
+ * @package gamma
+ */
+
+/* === Individual Entry Styles === */
+// General
+.post {
+  padding-top: .5rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  text-align: left;
+  background: $white;
+}
+
+// Category
+.post__category {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  width: auto;
+}
+.post__category--blog_post { background: $blue; }
+.post__category--podcast { background: $red; }
+.post__category--book_review { background: $yellow; }
+.post__category-icon { color: $white; }
+
+// Title/Meta
+.post__title { padding-left: 2.5rem; }
+.post__meta {
+  padding-left: 2.5rem; 
+
+  .post__posted {
+    float: left;
+    font-size: .75rem;
+    color: $grey;
+  }
+}
+
+// Image
+.post__image {
+  margin-top: 1.75rem;
+  width: 100%;
+}
+
+// Content
+.post__content {
+  margin-top: 1rem;
+
+  p {
+    margin-bottom: .5rem;
+    line-height: 1.2;
+
+    &:last-of-type { margin-bottom: 0; }
+  }
+  h3 { margin-bottom: .5rem; }
+}
+

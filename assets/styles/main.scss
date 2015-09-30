@@ -29,13 +29,30 @@
 /* Grid, header, footer, sidebar, forms, parts of pages */
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/forms';
 @import 'layout/page';
 @import 'layout/sidebar';
 
 /* === Pages === */
 /* Specific styles for individual pages */
-@import 'pages/blog';
+// Home Page
 @import 'pages/home';
+
+// Blog Section
+@import 'pages/blog';
+@import 'pages/post';
+
+// Work Section
+@import 'pages/item';
+@import 'pages/portfolio';
+
+// About Section
+@import 'pages/about';
+
+// Contact Section
+@import 'pages/contact';
+
+// Vimrc Section
 
 /* === Themes === */
 /* Any themes, like light/dark */

@@ -7,12 +7,77 @@
  */
 
 /* === Individual Entry Styles === */
-.entry__date {
-  color: $grey;
-  font-size: .9rem;
-  width: 4.5rem;
+// General
+.entry {
+  margin-bottom: 1rem;
+  padding-top: .5rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  text-align: left;
+  background: $white;
+
+  &:last-of-type { margin-bottom: 0; }
 }
-.entry__link {
-  width: calc(100% - 100px);
-  margin-left: .5rem;
+
+// Left Side
+.entry__left {
+  width: 66%;
+  padding-right: .5rem;
+}
+.entry__category {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  width: auto;
+}
+.entry__category--blog_post { background: $blue; }
+.entry__category--podcast { background: $red; }
+.entry__category--book_review { background: $yellow; }
+.entry__category-icon { color: $white; }
+.entry__title {
+  padding-left: 2.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+.entry__meta {
+  padding-left: 2.5rem;
+
+  .entry__posted {
+    float: left;
+    font-size: .75rem;
+    color: $grey;
+  }
+}
+.entry__excerpt {
+  margin-top: 1.5rem;
+
+  p {
+    margin-bottom: .5rem;
+    line-height: 1.2;
+
+    &:last-of-type { margin-bottom: 0; }
+  }
+}
+
+// Right Side
+.entry__right {
+  width: 34%;
+  padding-left: .5rem;
+}
+.entry__image { width: 100%; }
+
+// Read More
+.entry__read-more {
+  clear: both;
+  display: inline-block;
+  float: left;
+  margin-top: 1rem;
+  width: auto;
+  font-size: .75rem;
 }

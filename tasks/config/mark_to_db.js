@@ -59,8 +59,11 @@ module.exports  = function(grunt) {
             var fileContents = grunt.file.read(file);
             var yamlFrontMatter = yamlFront.loadFront(fileContents);
             yamlFrontMatter.content = markdown.toHTML(yamlFrontMatter.__content, 'Gruber');
+            var excerpt = yamlFrontMatter.content.split(/\n\n/g);
+            yamlFrontMatter.excerpt = excerpt[0] + (excerpt[1] ? excerpt[1] : '');
+            yamlFrontMatter.filename = file.split('/').pop();
 
-            var url = 'http://localhost:1337/' + api + '?filename=' + file.split('/').pop();
+            var url = 'http://localhost:1337/' + api + '?filename=' + yamlFrontMatter.filename;
             request.get({url: url, json: true}, function (err, httpMessage, res) {
               if (err) {
                 console.log('Error: ' + err);
@@ -70,14 +73,14 @@ module.exports  = function(grunt) {
               } else {
                 if (res.length > 0) {
                   var errors = [];
-                  if (res[0].title !== yamlFrontMatter.title) {
-                    errors.push('title'); 
-                  }
-                  if (res[0].slug !== yamlFrontMatter.slug) {
-                    errors.push('slug');
-                  }
-                  if (res[0].content !== yamlFrontMatter.content) {
-                    errors.push('content');
+                  // Loop through all the results of yamlFrontMatter and compare with what's in the db
+                  for (var key in yamlFrontMatter) {
+                    // Ensure key is not inherited
+                    if (yamlFrontMatter.hasOwnProperty(key)) {
+                      if (res[0][key] !== yamlFrontMatter[key]) {
+                        errors.push(key);
+                      }
+                    }
                   }
 
                   if (errors.length > 0) {
@@ -104,7 +107,7 @@ module.exports  = function(grunt) {
                     }
                   }
                 } else {
-                  request.post({url: 'http://localhost:1337/' + api, json: true, body: {slug: yamlFrontMatter.slug, title: yamlFrontMatter.title, filename: file.split('/').pop(), content: yamlFrontMatter.content}}, function (err, httpMessage, res) {
+                  request.post({url: 'http://localhost:1337/' + api, json: true, body: yamlFrontMatter}, function (err, httpMessage, res) {
                     if (err) {
                       if (index === (arr.length - 1)) {
                         done();
@@ -114,7 +117,7 @@ module.exports  = function(grunt) {
                       if (index === (arr.length - 1)) {
                         done();
                       }
-                      return console.log('Success!: ' + res.message);
+                      return console.log('Success!: ' + res);
                     }
                   });
                 }

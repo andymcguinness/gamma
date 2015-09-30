@@ -14,10 +14,19 @@ module.exports = {
     slug: {
       type: 'string'
     },
+    featured_image: {
+      type: 'string'
+    },
+    category: {
+      type: 'string'
+    },
     filename: {
       type: 'string'
     },
-    contents: {
+    content: {
+      type: 'text'
+    },
+    excerpt: {
       type: 'text'
     }
   }
