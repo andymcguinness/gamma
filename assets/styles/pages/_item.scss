@@ -45,16 +45,16 @@
     margin-bottom: .5rem;
 
     &:last-of-type { margin-bottom: 0; }
+    a,
+    span {
+      display: inline;
+      float: none;
+      width: auto;
+    }
   }
   img {
     margin-top: .5rem;
     margin-bottom: 1rem;
-  }
-  a,
-  span {
-    display: inline;
-    float: none;
-    width: auto;
   }
 }
 
