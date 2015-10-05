@@ -45,13 +45,13 @@
     margin-bottom: .5rem;
     line-height: 1.2;
 
-    &:last-of-type { margin-bottom: 0; }
     a,
     span {
       display: inline;
       float: none;
       width: auto;
     }
+    &:last-of-type { margin-bottom: 0; }
   }
   img {
     margin-top: .5rem;
