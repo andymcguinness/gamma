@@ -1,5 +1,6 @@
 ---
 title: Craftsman Club
+slug: craftsman_club
 client: Craftsman
 role: Front-End Developer
 technology: Ruby on Rails, Redis, SCSS, Coffeescript, HAML, Git, Heroku
